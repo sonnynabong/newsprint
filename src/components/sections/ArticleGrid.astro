@@ -1,0 +1,105 @@
+---
+import type { Article } from '../../data/articles.ts';
+import { ArrowRight } from '../icons/index.tsx';
+
+interface Props {
+  title: string;
+  articles: Article[];
+  columns?: 2 | 3 | 4;
+  showImage?: boolean;
+  class?: string;
+}
+
+const { 
+  title, 
+  articles, 
+  columns = 4, 
+  showImage = true,
+  class: className = '' 
+} = Astro.props;
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+};
+---
+
+<section class={`py-12 lg:py-16 ${className}`}>
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Section Header */}
+    <div class="flex items-center justify-between border-b-4 border-[#111111] pb-4 mb-8">
+      <h2 class="font-serif font-black text-[#111111] text-3xl lg:text-4xl tracking-tight">
+        {title}
+      </h2>
+      <a 
+        href="#" 
+        class="hidden sm:inline-flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-widest text-[#111111] hover:text-[#CC0000] transition-colors duration-200"
+      >
+        View All
+        <ArrowRight className="h-4 w-4" strokeWidth={2} />
+      </a>
+    </div>
+
+    {/* Article Grid */}
+    <div class={`grid grid-cols-1 ${gridCols[columns]} border-t border-l border-[#111111]`}>
+      {articles.map((article, index) => (
+        <a 
+          href={`/article/${article.id}`}
+          class={`
+            block border-r border-b border-[#111111] bg-[#F9F9F7]
+            ${showImage ? '' : 'p-6'}
+            group hard-shadow-hover
+          `}
+        >
+          {showImage && (
+            <div class="aspect-[16/10] overflow-hidden bg-neutral-200">
+              <img 
+                src={article.imageUrl} 
+                alt={article.imageCaption}
+                class="w-full h-full object-cover grayscale group-hover:sepia-[50%] transition-all duration-200"
+              />
+            </div>
+          )}
+          <div class={showImage ? 'p-6' : ''}>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="font-mono text-xs uppercase tracking-widest text-[#CC0000]">
+                {article.category}
+              </span>
+              {article.trending && (
+                <span class="font-mono text-xs uppercase tracking-widest text-neutral-400">
+                  Trending
+                </span>
+              )}
+            </div>
+            <h3 class="font-serif font-bold text-[#111111] text-xl lg:text-2xl leading-tight mb-3 group-hover:text-[#CC0000] transition-colors duration-200">
+              {article.headline}
+            </h3>
+            <p class="font-body text-neutral-600 text-sm leading-relaxed mb-4 line-clamp-2">
+              {article.excerpt}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">
+                {article.readTime}
+              </span>
+              <span class="font-mono text-xs text-neutral-400">
+                {new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* Mobile View All */}
+    <div class="sm:hidden mt-6 text-center">
+      <a 
+        href="#" 
+        class="inline-flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-widest text-[#111111] hover:text-[#CC0000] transition-colors duration-200"
+      >
+        View All
+        <ArrowRight className="h-4 w-4" strokeWidth={2} />
+      </a>
+    </div>
+  </div>
+</section>

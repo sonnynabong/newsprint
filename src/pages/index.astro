@@ -1,17 +1,210 @@
 ---
+import '../styles/global.css';
+import Header from '../components/sections/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import ArticleGrid from '../components/sections/ArticleGrid.astro';
+import FeaturedStory from '../components/sections/FeaturedStory.astro';
+import InvertedSection from '../components/sections/InvertedSection.astro';
+import Newsletter from '../components/sections/Newsletter.astro';
+import Footer from '../components/sections/Footer.astro';
 
+import { 
+  getFeaturedArticle, 
+  getArticlesByCategory,
+  getTrendingArticles 
+} from '../data/articles.ts';
+
+const featuredArticle = getFeaturedArticle();
+const worldNews = getArticlesByCategory('World');
+const politicsNews = getArticlesByCategory('Politics');
+const businessNews = getArticlesByCategory('Business');
+const techNews = getArticlesByCategory('Technology');
+const scienceNews = getArticlesByCategory('Science');
+const healthNews = getArticlesByCategory('Health');
+const cultureNews = getArticlesByCategory('Culture');
+const sportsNews = getArticlesByCategory('Sports');
+const trendingArticles = getTrendingArticles();
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content="The Daily Chronicle - All the News That's Fit to Print. Independent journalism since 1851." />
+  <title>The Daily Chronicle - Breaking News & Analysis</title>
+</head>
+<body class="min-h-screen bg-[#F9F9F7]">
+  <Header />
+  
+  <main>
+    {/* Hero Section */}
+    {featuredArticle && <Hero article={featuredArticle} />}
+    
+    {/* World News Grid */}
+    <ArticleGrid 
+      title="World News" 
+      articles={worldNews} 
+      columns={4}
+      class="bg-[#F9F9F7]"
+    />
+    
+    {/* Ornamental Divider */}
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-8 text-center font-serif text-2xl text-neutral-400 tracking-[1em]">
+        &#x2727; &#x2727; &#x2727;
+      </div>
+    </div>
+    
+    {/* Politics & Business - 2 Column Grid */}
+    <div class="py-12 lg:py-16">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0">
+          {/* Politics */}
+          <div class="lg:border-r lg:border-[#111111] lg:pr-8">
+            <div class="flex items-center justify-between border-b-4 border-[#111111] pb-4 mb-8">
+              <h2 class="font-serif font-black text-[#111111] text-2xl lg:text-3xl tracking-tight">
+                Politics
+              </h2>
+            </div>
+            <div class="space-y-6">
+              {politicsNews.map((article) => (
+                <a href={`/article/${article.id}`} class="block group border-b border-[#111111] pb-6 last:border-0">
+                  <div class="flex items-center gap-2 mb-2">
+                    {article.breaking && (
+                      <span class="bg-[#CC0000] text-white font-sans text-xs font-bold uppercase tracking-widest px-2 py-0.5">
+                        Breaking
+                      </span>
+                    )}
+                    <span class="font-mono text-xs text-neutral-500">{article.readTime}</span>
+                  </div>
+                  <h3 class="font-serif font-bold text-[#111111] text-xl leading-tight mb-2 group-hover:text-[#CC0000] transition-colors duration-200">
+                    {article.headline}
+                  </h3>
+                  <p class="font-body text-neutral-600 text-sm leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          {/* Business */}
+          <div class="lg:pl-8">
+            <div class="flex items-center justify-between border-b-4 border-[#111111] pb-4 mb-8">
+              <h2 class="font-serif font-black text-[#111111] text-2xl lg:text-3xl tracking-tight">
+                Business
+              </h2>
+            </div>
+            <div class="space-y-6">
+              {businessNews.map((article) => (
+                <a href={`/article/${article.id}`} class="block group border-b border-[#111111] pb-6 last:border-0">
+                  <div class="flex items-center gap-2 mb-2">
+                    {article.trending && (
+                      <span class="bg-[#111111] text-white font-sans text-xs font-bold uppercase tracking-widest px-2 py-0.5">
+                        Trending
+                      </span>
+                    )}
+                    <span class="font-mono text-xs text-neutral-500">{article.readTime}</span>
+                  </div>
+                  <h3 class="font-serif font-bold text-[#111111] text-xl leading-tight mb-2 group-hover:text-[#CC0000] transition-colors duration-200">
+                    {article.headline}
+                  </h3>
+                  <p class="font-body text-neutral-600 text-sm leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* Featured Story */}
+    {trendingArticles[0] && <FeaturedStory article={trendingArticles[0]} />}
+    
+    {/* Technology Grid */}
+    <ArticleGrid 
+      title="Technology" 
+      articles={techNews} 
+      columns={2}
+      class="bg-[#F9F9F7]"
+    />
+    
+    {/* Inverted Section - Science & Health */}
+    <InvertedSection 
+      title="Science & Health" 
+      articles={[...scienceNews, ...healthNews]}
+    />
+    
+    {/* Culture Grid */}
+    <ArticleGrid 
+      title="Arts & Culture" 
+      articles={cultureNews} 
+      columns={2}
+      class="bg-[#F9F9F7]"
+    />
+    
+    {/* Sports Section */}
+    <section class="py-12 lg:py-16 border-y border-[#111111]">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between border-b-4 border-[#111111] pb-4 mb-8">
+          <h2 class="font-serif font-black text-[#111111] text-3xl lg:text-4xl tracking-tight">
+            Sports
+          </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Sports Story */}
+          {sportsNews[0] && (
+            <div class="lg:col-span-8">
+              <a href={`/article/${sportsNews[0].id}`} class="block group">
+                <div class="aspect-[16/9] overflow-hidden bg-neutral-200 mb-6">
+                  <img 
+                    src={sportsNews[0].imageUrl} 
+                    alt={sportsNews[0].imageCaption}
+                    class="w-full h-full object-cover grayscale group-hover:sepia-[50%] transition-all duration-200"
+                  />
+                </div>
+                <span class="font-mono text-xs uppercase tracking-widest text-[#CC0000]">
+                  {sportsNews[0].category}
+                </span>
+                <h3 class="font-serif font-black text-[#111111] text-2xl sm:text-3xl lg:text-4xl leading-tight mt-3 mb-4 group-hover:text-[#CC0000] transition-colors duration-200">
+                  {sportsNews[0].headline}
+                </h3>
+                <p class="font-body text-neutral-600 text-lg leading-relaxed">
+                  {sportsNews[0].excerpt}
+                </p>
+              </a>
+            </div>
+          )}
+          
+          {/* Side Sports Stories */}
+          <div class="lg:col-span-4 space-y-6">
+            {sportsNews.slice(1).map((article) => (
+              <a href={`/article/${article.id}`} class="block group border-b border-[#111111] pb-6 last:border-0">
+                <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">
+                  {article.category}
+                </span>
+                <h4 class="font-serif font-bold text-[#111111] text-lg leading-tight mt-2 group-hover:text-[#CC0000] transition-colors duration-200">
+                  {article.headline}
+                </h4>
+                <span class="font-mono text-xs text-neutral-400 mt-2 block">{article.readTime}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    {/* Newsletter */}
+    <Newsletter />
+  </main>
+  
+  <Footer />
+</body>
 </html>

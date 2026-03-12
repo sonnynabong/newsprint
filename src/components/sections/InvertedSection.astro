@@ -1,0 +1,96 @@
+---
+import type { Article } from '../../data/articles.ts';
+import { ArrowRight } from '../icons/index.tsx';
+
+interface Props {
+  title: string;
+  articles: Article[];
+  class?: string;
+}
+
+const { title, articles, class: className = '' } = Astro.props;
+---
+
+<section class={`bg-[#111111] text-white py-16 lg:py-20 ${className}`}>
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Section Header */}
+    <div class="flex items-center justify-between border-b-4 border-white pb-4 mb-10">
+      <h2 class="font-serif font-black text-white text-3xl lg:text-4xl tracking-tight">
+        {title}
+      </h2>
+      <a 
+        href="#" 
+        class="hidden sm:inline-flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-widest text-white hover:text-[#CC0000] transition-colors duration-200"
+      >
+        View All
+        <ArrowRight className="h-4 w-4" strokeWidth={2} />
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
+      {/* Main Article */}
+      {articles[0] && (
+        <div class="lg:col-span-7 lg:border-r lg:border-neutral-700 lg:pr-8">
+          <a href={`/article/${articles[0].id}`} class="block group">
+            <div class="aspect-[16/9] overflow-hidden bg-neutral-800 mb-6">
+              <img 
+                src={articles[0].imageUrl} 
+                alt={articles[0].imageCaption}
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-200"
+              />
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-mono text-xs uppercase tracking-widest text-[#CC0000]">
+                {articles[0].category}
+              </span>
+              <span class="font-mono text-xs text-neutral-400">
+                {articles[0].readTime}
+              </span>
+            </div>
+            <h3 class="font-serif font-black text-white text-2xl sm:text-3xl lg:text-4xl leading-tight mb-4 group-hover:text-[#CC0000] transition-colors duration-200">
+              {articles[0].headline}
+            </h3>
+            <p class="font-body text-neutral-300 text-lg leading-relaxed">
+              {articles[0].excerpt}
+            </p>
+          </a>
+        </div>
+      )}
+
+      {/* Side Articles */}
+      <div class="lg:col-span-5 lg:pl-8">
+        <div class="space-y-6">
+          {articles.slice(1, 4).map((article, index) => (
+            <a 
+              href={`/article/${article.id}`}
+              class="block group border-b border-neutral-700 pb-6 last:border-0"
+            >
+              <div class="flex items-start gap-4">
+                <span class="font-serif font-black text-4xl text-[#CC0000] leading-none">
+                  {String(index + 2).padStart(2, '0')}
+                </span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="font-mono text-xs uppercase tracking-widest text-[#CC0000]">
+                      {article.category}
+                    </span>
+                  </div>
+                  <h4 class="font-serif font-bold text-white text-lg lg:text-xl leading-tight group-hover:text-[#CC0000] transition-colors duration-200">
+                    {article.headline}
+                  </h4>
+                  <p class="font-body text-neutral-400 text-sm mt-2 line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="py-8 text-center font-serif text-2xl text-neutral-300 tracking-[1em]">
+  &#x2727; &#x2727; &#x2727;
+</div>

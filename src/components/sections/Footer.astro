@@ -1,0 +1,127 @@
+---
+import { categories } from '../../data/articles.ts';
+
+const footerLinks = {
+  'Company': ['About Us', 'Careers', 'Press', 'Contact'],
+  'Support': ['Help Center', 'Accessibility', 'Advertise', 'Sitemap'],
+  'Legal': ['Terms of Service', 'Privacy Policy', 'Cookie Policy', 'Code of Ethics'],
+};
+
+const socialLinks = [
+  { name: 'Twitter', handle: '@DailyChronicle' },
+  { name: 'Facebook', handle: 'DailyChronicle' },
+  { name: 'Instagram', handle: '@dailychronicle' },
+  { name: 'LinkedIn', handle: 'The Daily Chronicle' },
+];
+---
+
+<footer class="bg-[#111111] text-white">
+  {/* Main Footer */}
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12">
+      {/* Brand Column */}
+      <div class="col-span-2">
+        <h3 class="font-serif font-black text-2xl tracking-tight mb-4">
+          THE DAILY CHRONICLE
+        </h3>
+        <p class="font-body text-neutral-400 text-sm leading-relaxed mb-6">
+          All the News That's Fit to Print. Delivering independent journalism since 1851.
+        </p>
+        <div class="flex gap-3">
+          {socialLinks.map((social) => (
+            <a 
+              href="#"
+              class="border border-neutral-700 h-10 w-10 flex items-center justify-center hover:bg-white hover:text-[#111111] hover:border-white transition-all duration-200"
+              aria-label={social.name}
+            >
+              <span class="font-mono text-xs">{social.name.charAt(0)}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Categories */}
+      <div>
+        <h4 class="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4">
+          Sections
+        </h4>
+        <ul class="space-y-2">
+          {categories.slice(0, 6).map((category) => (
+            <li>
+              <a 
+                href={`/category/${category.toLowerCase()}`}
+                class="font-body text-sm text-neutral-400 hover:text-white transition-colors duration-200"
+              >
+                {category}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Company Links */}
+      <div>
+        <h4 class="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4">
+          Company
+        </h4>
+        <ul class="space-y-2">
+          {footerLinks['Company'].map((link) => (
+            <li>
+              <a href="#" class="font-body text-sm text-neutral-400 hover:text-white transition-colors duration-200">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Support Links */}
+      <div>
+        <h4 class="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4">
+          Support
+        </h4>
+        <ul class="space-y-2">
+          {footerLinks['Support'].map((link) => (
+            <li>
+              <a href="#" class="font-body text-sm text-neutral-400 hover:text-white transition-colors duration-200">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Legal Links */}
+      <div>
+        <h4 class="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4">
+          Legal
+        </h4>
+        <ul class="space-y-2">
+          {footerLinks['Legal'].map((link) => (
+            <li>
+              <a href="#" class="font-body text-sm text-neutral-400 hover:text-white transition-colors duration-200">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {/* Bottom Bar */}
+  <div class="border-t border-neutral-800">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <span class="font-mono text-xs text-neutral-500 text-center md:text-left">
+          Edition: Vol 1.0 | Printed in NYC | &copy; {new Date().getFullYear()} The Daily Chronicle. All Rights Reserved.
+        </span>
+        <div class="flex items-center gap-6">
+          <span class="font-mono text-xs text-neutral-500">
+            Independent. Unbiased. Essential.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

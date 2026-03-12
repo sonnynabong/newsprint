@@ -1,0 +1,128 @@
+---
+import { Menu, Search } from '../icons/index.tsx';
+import { categories } from '../../data/articles.ts';
+
+const today = new Date().toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<header class="sticky top-0 z-40 bg-[#F9F9F7] border-b border-[#111111]">
+  {/* Edition Bar */}
+  <div class="border-b border-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-2">
+        <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">
+          Vol. 1 | {today} | New York Edition
+        </span>
+        <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">
+          Price: Free
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {/* Masthead */}
+  <div class="border-b border-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-6">
+        {/* Mobile Menu Button */}
+        <button 
+          class="lg:hidden border border-[#111111] h-11 w-11 flex items-center justify-center hover:bg-[#111111] hover:text-[#F9F9F7] transition-all duration-200"
+          aria-label="Open menu"
+        >
+          <Menu className="h-5 w-5" strokeWidth={1.5} />
+        </button>
+
+        {/* Logo */}
+        <a href="/" class="text-center flex-1 lg:flex-none">
+          <h1 class="font-serif font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111111]">
+            THE DAILY CHRONICLE
+          </h1>
+          <p class="hidden sm:block font-mono text-xs uppercase tracking-[0.3em] text-neutral-500 mt-1">
+            All the News That's Fit to Print
+          </p>
+        </a>
+
+        {/* Search & Subscribe */}
+        <div class="hidden lg:flex items-center gap-4">
+          <button 
+            class="border border-[#111111] h-11 w-11 flex items-center justify-center hover:bg-[#111111] hover:text-[#F9F9F7] transition-all duration-200"
+            aria-label="Search"
+          >
+            <Search className="h-5 w-5" strokeWidth={1.5} />
+          </button>
+          <a 
+            href="#subscribe"
+            class="bg-[#111111] text-[#F9F9F7] px-6 py-3 font-sans text-sm font-semibold uppercase tracking-widest hover:bg-white hover:!text-[#111111] border border-[#111111] transition-all duration-200 min-h-[44px] flex items-center"
+          >
+            Subscribe
+          </a>
+        </div>
+
+        {/* Mobile Search */}
+        <button 
+          class="lg:hidden border border-[#111111] h-11 w-11 flex items-center justify-center hover:bg-[#111111] hover:text-[#F9F9F7] transition-all duration-200"
+          aria-label="Search"
+        >
+          <Search className="h-5 w-5" strokeWidth={1.5} />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* Navigation */}
+  <nav class="hidden lg:block border-b border-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-center gap-8 py-3">
+        <a href="/" class="font-sans text-sm uppercase tracking-widest text-[#CC0000] font-semibold">
+          Home
+        </a>
+        {categories.map((category) => (
+          <a 
+            href={`/category/${category.toLowerCase()}`}
+            class="font-sans text-sm uppercase tracking-widest text-[#111111] hover:text-[#CC0000] transition-colors duration-200"
+          >
+            {category}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+
+  {/* Breaking News Ticker */}
+  <div class="bg-[#111111] text-white py-2 overflow-hidden">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4">
+        <span class="font-sans text-xs font-bold uppercase tracking-widest text-[#CC0000] shrink-0">
+          Breaking
+        </span>
+        <div class="flex-1 overflow-hidden">
+          <div class="whitespace-nowrap animate-marquee font-mono text-sm">
+            <span class="mx-8">Global Climate Summit Reaches Historic Agreement</span>
+            <span class="text-[#CC0000]">&#x25A0;</span>
+            <span class="mx-8">Tech Giants Face Unprecedented Antitrust Action</span>
+            <span class="text-[#CC0000]">&#x25A0;</span>
+            <span class="mx-8">Universal Cancer Vaccine Shows Promise in Phase III Trials</span>
+            <span class="text-[#CC0000]">&#x25A0;</span>
+            <span class="mx-8">Supreme Court Ruling Redefines Digital Privacy Rights</span>
+            <span class="text-[#CC0000]">&#x25A0;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+</style>

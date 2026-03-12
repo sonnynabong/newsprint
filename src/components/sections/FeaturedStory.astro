@@ -1,0 +1,76 @@
+---
+import type { Article } from '../../data/articles.ts';
+import { ArrowRight } from '../icons/index.tsx';
+
+interface Props {
+  article: Article;
+  class?: string;
+}
+
+const { article, class: className = '' } = Astro.props;
+---
+
+<section class={`py-12 lg:py-16 ${className}`}>
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <a href={`/article/${article.id}`} class="block group">
+      <div class="grid grid-cols-1 lg:grid-cols-12 border border-[#111111] bg-[#F9F9F7] hard-shadow-hover">
+        {/* Image */}
+        <div class="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-[#111111]">
+          <div class="aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden bg-neutral-200">
+            <img 
+              src={article.imageUrl} 
+              alt={article.imageCaption}
+              class="w-full h-full object-cover grayscale group-hover:sepia-[50%] transition-all duration-200"
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div class="lg:col-span-5 p-6 lg:p-10 flex flex-col justify-center">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#CC0000]">
+              {article.category}
+            </span>
+            {article.trending && (
+              <span class="bg-[#111111] text-white font-sans text-xs font-bold uppercase tracking-widest px-2 py-0.5">
+                Trending
+              </span>
+            )}
+          </div>
+          
+          <h2 class="font-serif font-black text-[#111111] text-3xl sm:text-4xl lg:text-5xl leading-[0.95] tracking-tight mb-6">
+            {article.headline}
+          </h2>
+          
+          <p class="font-body text-[#111111] text-lg leading-relaxed mb-6">
+            {article.excerpt}
+          </p>
+          
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 bg-neutral-200 flex items-center justify-center font-serif font-bold text-lg">
+              {article.author.charAt(0)}
+            </div>
+            <div>
+              <div class="font-sans text-sm font-semibold text-[#111111]">
+                {article.author}
+              </div>
+              <div class="font-mono text-xs text-neutral-500">
+                {article.authorTitle}
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between pt-6 border-t border-[#111111]">
+            <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">
+              {article.readTime}
+            </span>
+            <span class="inline-flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-widest text-[#111111] group-hover:text-[#CC0000] transition-colors duration-200">
+              Read Full Story
+              <ArrowRight className="h-4 w-4" strokeWidth={2} />
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

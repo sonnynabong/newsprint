@@ -1,0 +1,18 @@
+---
+interface Props {
+  variant?: 'default' | 'accent' | 'muted';
+  class?: string;
+}
+
+const { variant = 'default', class: className = '' } = Astro.props;
+
+const variantStyles = {
+  default: 'text-neutral-500',
+  accent: 'text-[#CC0000]',
+  muted: 'text-neutral-400',
+};
+---
+
+<span class={`font-mono text-xs uppercase tracking-widest ${variantStyles[variant]} ${className}`}>
+  <slot />
+</span>
