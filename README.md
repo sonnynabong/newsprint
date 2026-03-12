@@ -1,43 +1,125 @@
-# Astro Starter Kit: Minimal
+# The Daily Chronicle
 
-```sh
-npm create astro@latest -- --template minimal
+A newspaper-inspired news website built with Astro, React, and Tailwind CSS. Features a classic print journalism aesthetic with modern web technologies.
+
+**[🌐 View Live Demo](https://newsprint.vercel.app/)**
+
+![The Daily Chronicle](newsprint-homepage.png)
+
+## 📰 About
+
+The Daily Chronicle is a modern news portal that embraces the timeless design principles of traditional print newspapers. With stark geometry, high-contrast typography, and editorial layouts, it delivers an authoritative and immersive reading experience.
+
+### Design Philosophy
+
+- **High-contrast typography**: Massive serif headlines with sharp, authoritative presence
+- **Grid-based layouts**: Structured, newspaper-style content organization
+- **Zero border-radius**: Sharp corners for a classic print feel
+- **High information density**: Content-rich pages that maximize readability
+- **Monochromatic imagery**: Grayscale images with subtle hover effects
+
+## 🚀 Tech Stack
+
+- **[Astro](https://astro.build/)** v6 - Static site generator for blazing fast performance
+- **[Tailwind CSS](https://tailwindcss.com/)** v4 - Utility-first CSS framework
+- **[React](https://react.dev/)** v19 - Component library for interactive elements
+- **[Lucide React](https://lucide.dev/)** - Beautiful icon library
+- **TypeScript** - Type-safe development
+
+## 📁 Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
+├── public/              # Static assets (images, fonts)
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/      # Reusable components
+│   │   ├── sections/    # Page sections (Header, Hero, Footer, etc.)
+│   │   └── ui/          # UI components (Button, Card, etc.)
+│   ├── data/            # Content data (articles)
+│   ├── icons/           # Custom icon components
+│   ├── pages/           # Astro pages
+│   └── styles/          # Global styles
+├── astro.config.mjs     # Astro configuration
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Prerequisites
 
-Any static assets, like images, can be placed in the `public/` directory.
+- Node.js >= 22.12.0
 
-## 🧞 Commands
+### Getting Started
 
-All commands are run from the root of the project, from a terminal:
+```sh
+# Install dependencies
+npm install
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Start development server
+npm run dev
 
-## 👀 Want to learn more?
+# Build for production
+npm run build
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Preview production build
+npm run preview
+```
+
+The development server will start at `http://localhost:4321`.
+
+## 🎨 Features
+
+### Sections
+
+- **Header** - Masthead with navigation, search, and breaking news ticker
+- **Hero** - Featured story with large imagery
+- **Article Grid** - Category-based news grids (World, Technology, Culture)
+- **Politics & Business** - Two-column editorial layout
+- **Featured Story** - Full-width trending article showcase
+- **Science & Health** - Inverted dark section for visual contrast
+- **Sports** - Grid layout with main story and side articles
+- **Newsletter** - Email subscription signup
+- **Footer** - Site navigation and social links
+
+### Content Categories
+
+- World
+- Politics
+- Business
+- Technology
+- Science
+- Health
+- Culture
+- Sports
+- Climate
+
+## 📝 Content
+
+Articles are stored in `src/data/articles.ts` with TypeScript typing. Each article includes:
+
+- Headline and excerpt
+- Category and tags
+- Author information
+- Publication date and read time
+- Featured image with caption
+- Breaking/Trending flags
+
+## 🚢 Deployment
+
+This project is configured for easy deployment on Vercel:
+
+```sh
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+## 📄 License
+
+MIT License - feel free to use this template for your own projects!
+
+---
+
+Built with ❤️ using [Astro](https://astro.build/)
