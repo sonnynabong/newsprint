@@ -1,10 +1,32 @@
+```
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║     ████████╗██╗  ██╗███████╗    ██████╗  █████╗ ██╗██╗     ██╗ ║
+║     ╚══██╔══╝██║  ██║██╔════╝    ██╔══██╗██╔══██╗██║██║     ██║ ║
+║        ██║   ███████║█████╗      ██║  ██║███████║██║██║     ██║ ║
+║        ██║   ██╔══██║██╔══╝      ██║  ██║██╔══██║██║██║     ██║ ║
+║        ██║   ██║  ██║███████╗    ██████╔╝██║  ██║██║███████╗██║ ║
+║        ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝ ║
+║                                                                  ║
+║         ██████╗██╗  ██╗██████╗  ██████╗ ███╗   ██╗██╗ ██████╗ ██╗║
+║        ██╔════╝██║  ██║██╔══██╗██╔═══██╗████╗  ██║██║██╔════╝██║║
+║        ██║     ███████║██████╔╝██║   ██║██╔██╗ ██║██║██║     ██║║
+║        ██║     ██╔══██║██╔══██╗██║   ██║██║╚██╗██║██║██║     ╚═╝║
+║        ╚██████╗██║  ██║██║  ██║╚██████╔╝██║ ╚████║██║╚██████╗██╗║
+║         ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝║
+║                                                                  ║
+║                    "All the News That's Fit to Print"            ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+
 # The Daily Chronicle
 
-A newspaper-inspired news website built with Astro, React, and Tailwind CSS. Features a classic print journalism aesthetic with modern web technologies.
+> A newspaper-inspired news website with classic print journalism aesthetics
 
 **[🌐 View Live Demo](https://newsprint.vercel.app/)**
 
-![The Daily Chronicle](newsprint-homepage.png)
+---
 
 ## 📰 About
 
@@ -12,13 +34,28 @@ The Daily Chronicle is a modern news portal that embraces the timeless design pr
 
 ### Design Philosophy
 
-- **High-contrast typography**: Massive serif headlines with sharp, authoritative presence
-- **Grid-based layouts**: Structured, newspaper-style content organization
-- **Zero border-radius**: Sharp corners for a classic print feel
-- **High information density**: Content-rich pages that maximize readability
-- **Monochromatic imagery**: Grayscale images with subtle hover effects
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  • High-contrast typography  │  Massive serif headlines          │
+│  • Grid-based layouts        │  Structured content organization  │
+│  • Zero border-radius        │  Sharp, classic print feel        │
+│  • High info density         │  Content-rich, readable pages     │
+│  • Monochromatic imagery     │  Grayscale with subtle effects    │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ## 🚀 Tech Stack
+
+```
+    ┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+    │    Astro    │      │   Tailwind  │      │    React    │
+    │    v6.0     │  +   │    CSS v4   │  +   │    v19      │
+    │             │      │             │      │             │
+    │  ████████   │      │   ██████    │      │   ⚛  ⚛      │
+    │  ██    ██   │      │  ██    ██   │      │    ⚛⚛       │
+    │  ████████   │      │  █████████  │      │   ⚛  ⚛      │
+    └─────────────┘      └─────────────┘      └─────────────┘
+```
 
 - **[Astro](https://astro.build/)** v6 - Static site generator for blazing fast performance
 - **[Tailwind CSS](https://tailwindcss.com/)** v4 - Utility-first CSS framework
@@ -29,84 +66,106 @@ The Daily Chronicle is a modern news portal that embraces the timeless design pr
 ## 📁 Project Structure
 
 ```
-/
-├── public/              # Static assets (images, fonts)
-├── src/
-│   ├── components/      # Reusable components
-│   │   ├── sections/    # Page sections (Header, Hero, Footer, etc.)
-│   │   └── ui/          # UI components (Button, Card, etc.)
-│   ├── data/            # Content data (articles)
-│   ├── icons/           # Custom icon components
-│   ├── pages/           # Astro pages
-│   └── styles/          # Global styles
-├── astro.config.mjs     # Astro configuration
-└── package.json
+newsprint/
+├── 📂 public/              # Static assets (images, fonts)
+├── 📂 src/
+│   ├── 📂 components/
+│   │   ├── 📂 sections/    # Header, Hero, Footer, etc.
+│   │   └── 📂 ui/          # Button, Card, etc.
+│   ├── 📂 data/            # Content data
+│   ├── 📂 icons/           # Custom icons
+│   ├── 📂 pages/           # Astro pages
+│   └── 📂 styles/          # Global styles
+├── ⚙️ astro.config.mjs     # Astro configuration
+└── 📦 package.json
 ```
 
 ## 🛠️ Development
 
 ### Prerequisites
 
-- Node.js >= 22.12.0
+```
+┌────────────────────────────────────┐
+│  Node.js >= 22.12.0  ✓            │
+│  npm or yarn or pnpm  ✓           │
+└────────────────────────────────────┘
+```
 
 ### Getting Started
 
 ```sh
-# Install dependencies
+# 📥 Install dependencies
 npm install
 
-# Start development server
+# 🚀 Start development server
 npm run dev
 
-# Build for production
+# 📦 Build for production
 npm run build
 
-# Preview production build
+# 👀 Preview production build
 npm run preview
 ```
 
-The development server will start at `http://localhost:4321`.
+The development server starts at `http://localhost:4321`
 
 ## 🎨 Features
 
-### Sections
-
-- **Header** - Masthead with navigation, search, and breaking news ticker
-- **Hero** - Featured story with large imagery
-- **Article Grid** - Category-based news grids (World, Technology, Culture)
-- **Politics & Business** - Two-column editorial layout
-- **Featured Story** - Full-width trending article showcase
-- **Science & Health** - Inverted dark section for visual contrast
-- **Sports** - Grid layout with main story and side articles
-- **Newsletter** - Email subscription signup
-- **Footer** - Site navigation and social links
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        PAGE SECTIONS                        │
+├─────────────────────────────────────────────────────────────┤
+│  📰 Header          │  Masthead, nav, breaking news ticker   │
+│  ⭐ Hero            │  Featured story with large imagery     │
+│  🌍 Article Grid    │  Category-based news grids             │
+│  🏛️ Politics        │  Two-column editorial layout           │
+│  💼 Business        │  Side-by-side with Politics            │
+│  ✨ Featured Story  │  Full-width trending article           │
+│  🔬 Science/Health  │  Inverted dark section                 │
+│  ⚽ Sports          │  Grid layout with main + side stories  │
+│  📧 Newsletter      │  Email subscription signup             │
+│  🦶 Footer          │  Site navigation & social links        │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ### Content Categories
 
-- World
-- Politics
-- Business
-- Technology
-- Science
-- Health
-- Culture
-- Sports
-- Climate
+```
+    ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+    │  WORLD   │  │ POLITICS │  │ BUSINESS │  │TECHNOLOGY│
+    └──────────┘  └──────────┘  └──────────┘  └──────────┘
+    
+    ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+    │ SCIENCE  │  │  HEALTH  │  │ CULTURE  │  │  SPORTS  │
+    └──────────┘  └──────────┘  └──────────┘  └──────────┘
+    
+    ┌──────────┐
+    │ CLIMATE  │
+    └──────────┘
+```
 
 ## 📝 Content
 
-Articles are stored in `src/data/articles.ts` with TypeScript typing. Each article includes:
+Articles are stored in `src/data/articles.ts` with TypeScript typing:
 
-- Headline and excerpt
-- Category and tags
-- Author information
-- Publication date and read time
-- Featured image with caption
-- Breaking/Trending flags
+```typescript
+interface Article {
+  id: number;
+  headline: string;
+  excerpt: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+  imageUrl: string;
+  breaking?: boolean;
+  trending?: boolean;
+}
+```
 
 ## 🚢 Deployment
 
-This project is configured for easy deployment on Vercel:
+Deploy to Vercel in seconds:
 
 ```sh
 # Install Vercel CLI
@@ -116,10 +175,32 @@ npm i -g vercel
 vercel
 ```
 
-## 📄 License
+---
 
-MIT License - feel free to use this template for your own projects!
+```
+---
+
+*Made with chaos and caffeine.*
 
 ---
 
-Built with ❤️ using [Astro](https://astro.build/)
+## 📬 Contact
+
+```text
+   _____                      _   _       _                     
+  / ____|                    | \ | |     | |                    
+ | (___   ___  _ __  _ __  _ |  \| | __ _| |__   ___  _ __   __ _ 
+  \___ \ / _ \| '_ \| '_ \| | | . ` |/ _` | '_ \ / _ \| '_ \ / _` |
+  ____) | (_) | | | | | | | | | |\  | (_| | |_) | (_) | | | | (_| |
+ |_____/ \___/|_| |_|_| |_|_| |_| \_|\__,_|_.__/ \___/|_| |_|\__, |
+                                                              __/ |
+                                                             |___/ 
+```
+
+**Site:** [sonnynabong.dev](https://sonnynabong.dev)  
+**Email:** [info@sonnynabong.dev](mailto:info@sonnynabong.dev)
+```
+
+## 📄 License
+
+MIT License - feel free to use this template for your own projects!
